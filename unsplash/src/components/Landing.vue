@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Landing',
   props: {
     msg: String
   }
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 h3 {
   margin: 40px 0 0;
 }
@@ -66,12 +66,12 @@ input{
 .content{
   padding: 0 20vw;
   margin-top: -5vh;
-}
-.gridArea{
-  display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(3, auto);
-  grid-gap: 30px 60px;
+  .gridArea{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 30px 60px;
+  }
 }
 .photo{
   background-color: blue;
@@ -81,15 +81,17 @@ input{
   align-items: flex-end;
   border-radius: 7px;
   box-shadow: inset 0px 0px 80px 0px rgba(0,0,0,0.8);
-}
-.photo__Details{
-  color: #fff;
-  padding: 7%;
+  
+  .photo__Details{
+    color: #fff;
+    padding: 7%;
+    
+    .location{
+      font-size: 11px;
+    }
+  }
 }
 p{
   margin: 10px 0 0;
-}
-.location{
-  font-size: 11px;
 }
 </style>
