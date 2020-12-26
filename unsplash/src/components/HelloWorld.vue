@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <!-- <h1>{{ msg }}</h1> -->
     <header class="header">
       <input type="" name="" placeholder="Search for photo">
     </header>
@@ -38,5 +38,18 @@ a {
 
 .header{
   background-color: #dce2e9;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10vw;
+}
+input{
+  height: 40px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  text-indent: 10px;
+  font-weight: bold;
 }
 </style>
