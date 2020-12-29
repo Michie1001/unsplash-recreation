@@ -2,20 +2,18 @@
   <div class="hello">
     <!-- <h1>{{ msg }}</h1> -->
     <header class="header">
-      <input type="" name="" placeholder="Search for photo">
+      <input type="" name="" placeholder="Search for photo" id="search" v-on:keyup.enter="searchPhotos()">
+      <button v-on:click="searchPhotos()">></button>
     </header>
     <div class="content">
-      <div class="gridArea">
-        <div class="photo">
-          <!-- <img src=""> -->
+      <div class="gridArea" id="results">
+        <img :src="photos">
+        <!-- <div class="photo">
           <div class="photo__Details">
             <p class="author">Jordan Okeke</p>
             <p class="location">Ogun, Nigeria</p>
           </div>
-        </div>
-        <div class="photo"></div>
-        <div class="photo"></div>
-        <div class="photo"></div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -25,7 +23,38 @@
 export default {
   name: 'Landing',
   props: {
-    msg: String
+    msg: String,
+  },
+  data: function() {
+    return {
+      photos: ''
+    };
+  },
+  methods: {
+    searchPhotos(){
+      let clientId = '5EdbUqaT9TTDMeUhgBNI6wCCESMDlVmKbs8banRc8jg';
+      let query = document.getElementById("search").value;
+      let url = `https://api.unsplash.com/photos/?client_id=${clientId}&query=${query}`;
+
+      fetch(url)
+      .then(function (data){
+        return data.json();
+      })
+      .then(function(data){
+        console.log(data);
+
+        data.forEach(photo => {
+          let result = `
+            ${photo.urls.regular}
+            ${photo.height}
+            ${photo.user.name}
+            ${photo.user.location}
+          `;
+          console.log(result);
+          // this.photos = result;
+        });
+      })
+    }
   }
 }
 </script>
@@ -70,6 +99,7 @@ input{
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(3, auto);
+    grid-template-rows: minmax(150px, auto);
     grid-gap: 30px 60px;
   }
 }
